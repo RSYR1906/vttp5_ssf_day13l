@@ -18,7 +18,7 @@ import com.SSF_day13lecture.SSF_day13lecture.service.PersonService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/person")
+@RequestMapping("/")
 public class PersonController {
 
     @Autowired
@@ -32,14 +32,14 @@ public class PersonController {
         return "personlist";
     }
 
-    @GetMapping("/createperson") // Display an empty form for creating a new person
+    @GetMapping("/") // Display an empty form for creating a new person
     public String createForm(Model model) {
         Person p = new Person();
         model.addAttribute("person", p); // Bind an empty Person object to the form
         return "personcreate"; // Return the view for the form
     }
 
-    @PostMapping("/createperson") // Handle form submission, validate, and save the input
+    @PostMapping("/") // Handle form submission, validate, and save the input
     public String postCreateForm(@Valid @ModelAttribute("person") Person person, BindingResult result, Model model) {
 
         if (result.hasErrors()) { // Check for validation errors
